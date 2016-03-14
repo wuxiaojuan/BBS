@@ -1,2 +1,0 @@
-# BBS
-just to learn
