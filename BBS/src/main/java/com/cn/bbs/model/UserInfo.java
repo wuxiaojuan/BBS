@@ -4,6 +4,7 @@ public class UserInfo  {
 	private String id;
 	private String username;
 	private String password;
+	private String qq;
 
 
 	public String getId() {
@@ -28,6 +29,14 @@ public class UserInfo  {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getQq() {
+		return qq;
+	}
+
+	public void setQq(String qq) {
+		this.qq = qq;
 	}
 
 

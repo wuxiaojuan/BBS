@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cn.bbs.dao.UserDao;
 import com.cn.bbs.model.UserInfo;
+import com.cn.bbs.system.utill.MD5Util;
 
 
 @Component("userservice")
@@ -23,25 +24,31 @@ public class UserServiceImpl implements UserService {
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	public String adduser(UserInfo user) {
+		String id = null;
+		int uesercout = userdao.getusercount(user.getUsername());
 		try {
-			 userdao.saveuser(user);
+			if (uesercout > 0) {
+				id = "0";
+			} else {
+				user.setPassword(MD5Util.md5Encode(user.getPassword()));
+				id = userdao.saveuser(user);
+			}
 		} catch (Exception e) {
 			log.info(e.getMessage());
 			e.printStackTrace();
 		}
-		return "";
+		return id;
+	
 	}
 
 	@Override
 	public UserInfo login(String username) {
-		// TODO Auto-generated method stub
-		return null;
+		return userdao.getuser(username);
 	}
 
 	@Override
 	public long getUserInfoscount() throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+	    	return userdao.getusercount("");
 	}
 
 	@Override

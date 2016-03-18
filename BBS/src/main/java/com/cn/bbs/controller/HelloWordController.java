@@ -6,8 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@RequestMapping("/hello")
 public class HelloWordController {
-	@RequestMapping(value="/hello")
+	@RequestMapping(value="/hello.do")
 	public ModelAndView sayHello(ModelMap modelMap){
 
 		String message="hello world, spring 3.1!";

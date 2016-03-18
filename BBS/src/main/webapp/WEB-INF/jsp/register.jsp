@@ -42,8 +42,13 @@
                     <input type="password" id="p" name="password" class="inputstyle"/>
                 </div>
                 </div>
-               
-                <div style="padding-left:50px;margin-top:20px;"><input type="submit" value="登 录" style="width:150px;" class="button_blue"/></div>
+                 <div class="userType">
+					普通用户
+					<input checked type="radio" value="1" name="type" class="userType2"/>
+					管理员
+					<input type="radio" value="2" name="type" />
+                </div>
+                <div style="padding-left:50px;margin-top:7px;"><input type="submit" value="登 录" style="width:150px;" class="button_blue"/></div>
               </form>
            </div>
            
