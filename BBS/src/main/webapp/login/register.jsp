@@ -24,27 +24,22 @@
     <div class="web_qr_login" id="web_qr_login" style="display: block; height: 235px;">    
 
             <!--登录-->
-            <div class="web_login" id="web_login">
-               
-               
-               <div class="login-box">
-    
-            
+          <div class="web_login" id="web_login">
+           <div class="login-box">
 			<div class="login_form">
-				<form action="http://www.js-css.cn" name="loginform" accept-charset="utf-8" id="login_form" class="loginForm" method="post"><input type="hidden" name="did" value="0"/>
-               <input type="hidden" name="to" value="log"/>
+			 <form action="${ctx}/home/login.do" name="loginform" accept-charset="utf-8" id="login_form" class="loginForm" method="post">
+			      <input type="hidden" name="did" value="0"/>
+                  <input type="hidden" name="to" value="log"/>
                 <div class="uinArea" id="uinArea">
                 <label class="input-tips" for="u">帐号：</label>
                 <div class="inputOuter" id="uArea">
-                    
                     <input type="text" id="u" name="username" class="inputstyle"/>
                 </div>
                 </div>
                 <div class="pwdArea" id="pwdArea">
                <label class="input-tips" for="p">密码：</label> 
                <div class="inputOuter" id="pArea">
-                    
-                    <input type="password" id="p" name="p" class="inputstyle"/>
+                    <input type="password" id="p" name="password" class="inputstyle"/>
                 </div>
                 </div>
                
@@ -61,16 +56,16 @@
   <!--注册-->
     <div class="qlogin" id="qlogin" style="display: none; ">
    
-    <div class="web_login"><form name="form2" id="regUser" accept-charset="utf-8"  action="http://www.js-css.cn" method="post">
-	      <input type="hidden" name="to" value="reg"/>
-		      		       <input type="hidden" name="did" value="0"/>
-        <ul class="reg_form" id="reg-ul">
+    <div class="web_login">
+      <form name="form2" id="regUser" accept-charset="utf-8"  action="${ctx}/home/register.do" method="post">
+	    <input type="hidden" name="to" value="reg"/>
+		    <input type="hidden" name="did" value="0"/>
+                <ul class="reg_form" id="reg-ul">
         		<div id="userCue" class="cue">快速注册请注意格式</div>
                 <li>
-                	
                     <label for="user"  class="input-tips2">用户名：</label>
                     <div class="inputOuter2">
-                        <input type="text" id="user" name="user" maxlength="16" class="inputstyle2"/>
+                        <input type="text" id="user" name="username" maxlength="16" class="inputstyle2"/>
                     </div>
                     
                 </li>
@@ -78,14 +73,14 @@
                 <li>
                 <label for="passwd" class="input-tips2">密码：</label>
                     <div class="inputOuter2">
-                        <input type="password" id="passwd"  name="passwd" maxlength="16" class="inputstyle2"/>
+                        <input type="password" id="passwd"  name="password" maxlength="16" class="inputstyle2"/>
                     </div>
                     
                 </li>
                 <li>
                 <label for="passwd2" class="input-tips2">确认密码：</label>
                     <div class="inputOuter2">
-                        <input type="password" id="passwd2" name="" maxlength="16" class="inputstyle2" />
+                        <input type="password" id="passwd2" name="password2" maxlength="16" class="inputstyle2" />
                     </div>
                     
                 </li>
@@ -101,7 +96,7 @@
                 
                 <li>
                     <div class="inputArea">
-                        <input type="button" id="reg"  style="margin-top:10px;margin-left:85px;" class="button_blue" value="注册"/>
+                        <input type="button" id="reg"  style="margin-top:10px;margin-left:85px;width:150px;" class="button_blue" value="注册"/>
                     </div>
                     
                 </li><div class="cl"></div>
