@@ -88,7 +88,7 @@
 		<session-timeout>5</session-timeout>
 	</session-config>
 	<welcome-file-list>
-		<welcome-file>/home/loginuser.do</welcome-file>
+		<welcome-file>/jsp/register.jsp</welcome-file>
 	</welcome-file-list>
   
 </web-app>
