@@ -28,8 +28,9 @@
            <div class="login-box">
 			<div class="login_form">
 			 <form action="${ctx}/home/login.do" name="loginform" accept-charset="utf-8" id="login_form" class="loginForm" method="post">
-			      <input type="hidden" name="did" value="0"/>
+			      <input type="hidden" name="did" value="${msg}" id="loginFailId"/>
                   <input type="hidden" name="to" value="log"/>
+                 <!--  <div id="userLongCue" class="cue">快速登陆请注意格式</div> -->
                 <div class="uinArea" id="uinArea">
                 <label class="input-tips" for="u">帐号：</label>
                 <div class="inputOuter" id="uArea">
@@ -63,8 +64,8 @@
    
     <div class="web_login">
       <form name="form2" id="regUser" accept-charset="utf-8"  action="${ctx}/home/register.do" method="post">
-	    <input type="hidden" name="to" value="reg"/>
-		    <input type="hidden" name="did" value="0"/>
+	         <input type="hidden" name="to" value="reg"/>
+		     <input  type="hidden" name="did" value="${message}" id="messageId"/>
                 <ul class="reg_form" id="reg-ul">
         		<div id="userCue" class="cue">快速注册请注意格式</div>
                 <li>
