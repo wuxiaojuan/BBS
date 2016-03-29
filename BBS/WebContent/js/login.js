@@ -9,7 +9,6 @@ $(function(){
 		
 		});
 	$('#switch_login').click(function(){
-		
 		$('#switch_login').removeClass("switch_btn").addClass('switch_btn_focus');
 		$('#switch_qlogin').removeClass("switch_btn_focus").addClass('switch_btn');
 		$('#switch_bottom').animate({left:'154px',width:'70px'});
@@ -23,17 +22,6 @@ if(getParam("a")=='0')
 }
 
 	});
-	
-function logintab(){
-	scrollTo(0);
-	$('#switch_qlogin').removeClass("switch_btn_focus").addClass('switch_btn');
-	$('#switch_login').removeClass("switch_btn").addClass('switch_btn_focus');
-	$('#switch_bottom').animate({left:'154px',width:'96px'});
-	$('#qlogin').css('display','none');
-	$('#web_qr_login').css('display','block');
-	
-}
-
 
 //根据参数名获得该参数 pname等于想要的参数名 
 function getParam(pname) { 
@@ -58,10 +46,33 @@ var reMethod = "GET",
 	pwdmin = 6;
 
 $(document).ready(function() {
+	
+	/*返回注册tab*/
+	function registerTab(){
+		$('#switch_login').removeClass("switch_btn").addClass('switch_btn_focus');
+		$('#switch_qlogin').removeClass("switch_btn_focus").addClass('switch_btn');
+		$('#switch_bottom').animate({left:'154px',width:'70px'});
+		$('#qlogin').css('display','block');
+		$('#web_qr_login').css('display','none');
+	}
 
+	var mess=$('#messageId').val();
+	if(mess!=""){
+		$('#userCue').html("<font color='red'><b>×"+mess+"</b></font>");
+		registerTab();
 
+	}
+	
+	var failLoginmeg=$('#loginFailId').val();
+	if(failLoginmeg!=""){
+		alert(failLoginmeg);
+
+	}
+		
 	$('#reg').click(function() {
-
+		
+		$('#messageId').val("");
+		
 		if ($('#user').val() == "") {
 			$('#user').focus().css({
 				border: "1px solid red",
@@ -83,13 +94,12 @@ $(document).ready(function() {
 			return false;
 
 		}
-		$.ajax({
+/*		$.ajax({
 			type: reMethod,
-			url: "/member/ajaxyz.php",
+			url: "/home/checkUser.do",
 			data: "uid=" + $("#user").val() + '&temp=' + new Date(),
 			dataType: 'html',
 			success: function(result) {
-
 				if (result.length > 2) {
 					$('#user').focus().css({
 						border: "1px solid red",
@@ -104,7 +114,7 @@ $(document).ready(function() {
 				}
 
 			}
-		});
+		});*/
 
 
 		if ($('#passwd').val().length < pwdmin) {
