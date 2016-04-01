@@ -7,11 +7,6 @@ import java.util.Map;
 /**
  * 常量
  * 
- * @ClassName: CommonConstant
- * @Description: TODO
- * @author yanghongkang
- * @date 2015-11-21 下午5:35:42
- *
  */
 public class CommonConstant {
 	// url集合
