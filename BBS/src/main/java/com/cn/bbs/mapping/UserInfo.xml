@@ -4,18 +4,18 @@
 
 	<insert id="saveuser" parameterType="com.cn.bbs.model.UserInfo">
 		insert into
-		user(USERNAME,PASSWORD,QQ) values
+		t_user(USERNAME,PASSWORD,QQ) values
 		(#{username},#{password},#{qq})
 	</insert>
 
 	<select id="getuserbyname" parameterType="String" resultType="com.cn.bbs.model.UserInfo">
-		select * from user u where u.username = #{usernmae}
+		select * from t_user u where u.username = #{usernmae}
 	</select>
 	
 	
 	<select id="getusercountbyname" parameterType="String"
 		resultType="int">
-		select count(1) from user u where 1=1
+		select count(1) from t_user u where 1=1
 		<if test=" _parameter != null and  _parameter != ''">
 			and u.username = #{_parameter}
 		</if>

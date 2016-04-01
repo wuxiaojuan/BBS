@@ -24,18 +24,21 @@
 <body>
   <%
     String username = (String)request.getSession().getAttribute("SESSION_USERNAME");
+    if(username==null){
+    	username="游客";
+    }
    
   %>
     <div id="top">
         <div id="top_left">
-            <a href="http://www.cnblogs.com/">首页</a><a href="http://news.cnblogs.com/">新闻</a><a href="http://job.cnblogs.com/">招聘</a><a href="http://zzk.cnblogs.com/">找找看</a><a href="http://kb.cnblogs.com/">知识库</a>
+            <a href="${ctx}/home/index.do">首页</a><a href="${ctx}/blog/toAddBlog.do">写博</a><a href="#">我的收藏</a><a href="#">我的博客</a><a href="${ctx}/home/logout.do">退出</a>
         </div>
     </div>
      <div class="clear"></div>
  <div id="wrapper">
     <div id="header">
       <div id="logo">
-           <a href="#" title="返回博客园首页"><img src="${ctx}/images/logo_home.gif" alt="logo"></a>
+           <a href="#" title="返回博客园首页"><img src="${ctx}/images/logo_home.jpg" alt="logo"></a>
       </div>
       <div class="clear"></div>
       <div id="header_user"><h1 id="header_user_left">
@@ -61,13 +64,10 @@
 	<div id="app_list_wrapper">
 		<ul class="app_list">
 			<li>
-                <img src="${ctx}/images/ico_ing.gif" alt=""><a id="app_ing" href="#">闪存</a><div class="clear"></div>
+                <img src="${ctx}/images/ico_group.gif" alt=""><a id="app_ing" href="#">版块</a><div class="clear"></div>
 			</li>
 			<li>
-				<em><a href="#" target="_blank">写博</a></em><img src="${ctx}/images/ico_blog.gif" alt=""><a id="app_blog" href="#">博客</a>
-			</li>
-			<li>
-				<em><a href="#">发言</a></em><img src="${ctx}/images/ico_group.gif" alt=""><a id="app_group" href="#">小组</a>
+				<em><a href="${ctx}/blog/toAddBlog.do" target="_blank">写博</a></em><img src="${ctx}/images/ico_blog.gif" alt=""><a id="app_blog" href="${ctx}/blog/toAddBlog.do" target="_blank">博客</a>
 			</li>
 			<li>
 				<em><a href="#" target="_blank">投递</a></em><img src="${ctx}/images/ico_news.gif" alt=""><a id="app_news" href="#">新闻</a>
@@ -99,16 +99,19 @@
     <div class="quick_block"></div>
     <ul class="topic_nav_block">
         <li>
-            <a href="#" class="">我的网摘</a>
+            <a href="#" class="current_nav">首页</a>
         </li>
         <li>
-            <a href="#" class="current_nav">我的标签</a>
+            <a href="#" class="">我的博客</a>
         </li>
         <li>
-            <a href="#" class="">热门网摘</a>
+            <a href="#" class="">精华</a>
         </li>
         <li>
-            <a href="#" class="">网摘插件</a>
+            <a href="#" class="">我的收藏</a>
+        </li>
+        <li>
+            <a href="#" class="">我的推存</a>
         </li>
     </ul>
     <div class="clear"></div>

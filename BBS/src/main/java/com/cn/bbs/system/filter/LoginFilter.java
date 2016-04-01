@@ -40,10 +40,10 @@ public class LoginFilter extends OncePerRequestFilter {
 				request.getSession().setAttribute(CommonConstant.SESSION_USERID, user.getId());
 				reqResponse.sendRedirect(request.getContextPath() + "/home/index.do");
 			} else {
-				reqResponse.sendRedirect(request.getContextPath() + "/home/login.do?temp=2");
+				reqResponse.sendRedirect(request.getContextPath() + "/home/loginUser.do?temp=2");
 			}
 		} else {
-			reqResponse.sendRedirect(request.getContextPath() + "/home/login.do?temp=3");
+			reqResponse.sendRedirect(request.getContextPath() + "/home/loginUser.do?temp=3");
 		}
 
 	}

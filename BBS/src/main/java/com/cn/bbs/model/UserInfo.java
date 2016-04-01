@@ -1,5 +1,11 @@
 package com.cn.bbs.model;
 
+/**
+ * 
+ * ”√ªß
+ * @author Joy.Wu
+ *
+ */
 public class UserInfo  {
 	private String id;
 	private String username;

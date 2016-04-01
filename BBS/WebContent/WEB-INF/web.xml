@@ -32,7 +32,7 @@
 	</filter-mapping> -->
 
  <!--   登陆过滤器 -->
-<!-- 	<filter>
+	<filter>
 		<filter-name>LoginFilter</filter-name>
 		<filter-class>com.cn.bbs.system.filter.LoginFilter</filter-class>
 	</filter>
@@ -40,7 +40,7 @@
 	<filter-mapping>
 		<filter-name>LoginFilter</filter-name>
 		<url-pattern>/home/login.do</url-pattern>
-	</filter-mapping> -->
+	</filter-mapping>
   
   
   <context-param>

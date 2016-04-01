@@ -9,7 +9,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam; 
-import org.springframework.web.servlet.ModelAndView;
 
 import com.cn.bbs.common.CommonConstant;
 import com.cn.bbs.model.UserInfo;
@@ -29,7 +28,7 @@ public class UserController {
 	 * @param username
 	 * @param password
 	 * @param qq
-	 * @param modelMap
+	 * @param modelMapregister.jsp
 	 * @return
 	 * 
 	 */
@@ -47,20 +46,15 @@ public class UserController {
 		if(!id.equals("0")){
 			request.getSession().setAttribute(CommonConstant.SESSION_USERNAME, user.getUsername());
 			request.getSession().setAttribute(CommonConstant.SESSION_USERID, user.getId());
+		}else{
+		    modelMap.addAttribute("message","该用户名已存在！"); 
+			return "register";
 		}
-		//modelMap.addAttribute("user",user); 
+		
 		
 		return "index";
 	}
 	
-	/***
-	 * 登陆页面 
-	 * @return
-	 */
-	@RequestMapping(value = "/loginuser.do", method = RequestMethod.GET)
-	public String loginuser() {
-		return "register";
-	}
 	
 	/***
 	 * BBS主页
@@ -78,7 +72,7 @@ public class UserController {
 	 * @param response
 	 * @return
 	 */
-	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/loginUser.do", method = RequestMethod.GET)
 	public String login(String temp,HttpServletRequest request, HttpServletResponse response) {
 		if ("1".equals(temp)) {
 			request.setAttribute("msg", "注册成功，请重新登陆");
@@ -109,31 +103,6 @@ public class UserController {
 		request.getSession().invalidate();
 		return "register";
 	}
-	
-	
-/*	*//***
-	 * 登陆
-	 * @param modelMap
-	 * @return
-	 *//*
-	@RequestMapping(value="/login.do")
-	public ModelAndView login(HttpServletRequest request, ModelMap modelMap){
-
-		String message="hello you register!";
-		String username="wuxiaojuan";request.getParameter("name") == null ? "" : request
-				.getParameter("name");
-		String password="1234";request.getParameter("password") == null ? "" : request
-				.getParameter("password");
-		UserInfo user=new UserInfo();
-		user.setId("3");
-		user.setUsername(username);
-		user.setPassword(password);
-		userservice.adduser(user);
-       
-		return new ModelAndView("index","message",message);
-		
-		
-	}*/
 	
 
 }
