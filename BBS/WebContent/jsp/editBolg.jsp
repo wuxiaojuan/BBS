@@ -16,7 +16,7 @@
 
     <div id="top">
         <div id="top_left">
-            <a href="${ctx}/home/index.do">首页</a><a href="${ctx}/blog/toAddBlog.do">写博</a><a href="#">我的收藏</a><a href="#">我的博客</a><a href="${ctx}/home/logout.do">退出</a>
+            <a href="${ctx}/home/index.do?type=0">首页</a><a href="${ctx}/blog/toAddBlog.do">写博</a><a href="#">我的收藏</a><a href="#">我的博客</a><a href="${ctx}/home/logout.do">退出</a>
         </div>
     </div>
     <div class="clear"></div>

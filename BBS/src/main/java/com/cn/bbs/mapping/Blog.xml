@@ -43,7 +43,13 @@
 	</select>
 	
 	<select id="getBlogByType" parameterType="String" resultType="com.cn.bbs.model.Blog">
-		select * from t_article a where a.type = #{type}
+		select a.aid,a.userid,a.title,a.content,
+			       a.create_time as createTime,a.section_id as sectionId,a.type,
+			       u.username,s.`name` as sectionName
+			from t_article a 
+			LEFT JOIN t_user u on a.userid=u.id 
+			left join t_section s on a.section_id =s.id
+			where  a.type = #{type} order by a.create_time desc
 	</select>
 	
 	

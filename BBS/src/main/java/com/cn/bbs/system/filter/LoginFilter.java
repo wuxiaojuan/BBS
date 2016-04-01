@@ -38,7 +38,7 @@ public class LoginFilter extends OncePerRequestFilter {
 				user.setPassword(null);
 				request.getSession().setAttribute(CommonConstant.SESSION_USERNAME, user.getUsername());
 				request.getSession().setAttribute(CommonConstant.SESSION_USERID, user.getId());
-				reqResponse.sendRedirect(request.getContextPath() + "/home/index.do");
+				reqResponse.sendRedirect(request.getContextPath() + "/home/index.do?type=0");
 			} else {
 				reqResponse.sendRedirect(request.getContextPath() + "/home/loginUser.do?temp=2");
 			}

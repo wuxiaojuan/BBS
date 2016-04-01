@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.cn.bbs.common.CommonConstant;
 import com.cn.bbs.model.UserInfo;
 import com.cn.bbs.service.userservice.UserService;
+import com.cn.bbs.utill.StringUtill;
 
 @Controller
 @RequestMapping("/home")
@@ -61,7 +62,11 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value = "/index.do", method = RequestMethod.GET)
-	public String index() {
+	public String index(String type,HttpServletRequest request) {
+		if(StringUtill.isEmty(type)){
+			type="0";
+		}
+		    request.setAttribute("stype11", type);
 		return "index";
 	}
 	

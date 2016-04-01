@@ -11,19 +11,19 @@
     <link href="${ctx}/css/blog.css" rel="stylesheet">
 
     
-    <link href="${ctx}/css/share.css" rel="Stylesheet" type="text/css">
-
-    <script type="text/javascript" src="${ctx}/js/jquery-1.9.0.min.js"></script>
+<%--     <script type="text/javascript" src="${ctx}/js/jquery-1.9.0.min.js"></script>
     <script type="text/javascript" src="${ctx}/js/common.js"></script>
     <script src="${ctx}/js/home_mvc.js"></script>
 
     
-<script src="${ctx}/js/favorite.js"></script>
+    <script src="${ctx}/js/favorite.js"></script> --%>
+    <script type="text/javascript" src="${ctx}/js/jquery-1.9.0.min.js"></script>
+    <script src="${ctx}/js/index.js"></script>
 
 </head>
 <body>
   <%
-    String username = (String)request.getSession().getAttribute("SESSION_USERNAME");
+    String username = (String)request.getSession().getAttribute("SESSION_USERNAME");  
     if(username==null){
     	username="游客";
     }
@@ -31,7 +31,7 @@
   %>
     <div id="top">
         <div id="top_left">
-            <a href="${ctx}/home/index.do">首页</a><a href="${ctx}/blog/toAddBlog.do">写博</a><a href="#">我的收藏</a><a href="#">我的博客</a><a href="${ctx}/home/logout.do">退出</a>
+            <a href="${ctx}/home/index.do?type=0">首页</a><a href="${ctx}/blog/toAddBlog.do">写博</a><a href="#">我的收藏</a><a href="#">我的博客</a><a href="${ctx}/home/logout.do">退出</a>
         </div>
     </div>
      <div class="clear"></div>
@@ -55,8 +55,6 @@
 	   </div>
        <div class="clear"></div>
     </div>
-    
-    
     
            <div id="container">
             <div id="app_bar">
@@ -99,50 +97,33 @@
     <div class="quick_block"></div>
     <ul class="topic_nav_block">
         <li>
-            <a href="#" class="current_nav">首页</a>
+            <a href="#" class="current_nav" name="0">首页</a>
         </li>
         <li>
-            <a href="#" class="">我的博客</a>
+            <a href="#" class="" name="1">我的博客</a>
+        </li>
+
+        <li>
+            <a href="#" class="" name="2">我的收藏</a>
         </li>
         <li>
-            <a href="#" class="">精华</a>
-        </li>
-        <li>
-            <a href="#" class="">我的收藏</a>
-        </li>
-        <li>
-            <a href="#" class="">我的推存</a>
+            <a href="#" class="" name="3">我的推存</a>
         </li>
     </ul>
     <div class="clear"></div>
  </div>
  <div id="main">
 	<div class="feed_block">
-        
-        <div class="post_block">
-          <div class="content">
-             <h2 class="entry_title">
-              <a href="http://www.cnblogs.com/yjf512/" class="title_author" target="_blank">[轩脉刃]</a>
-              <a href="http://www.cnblogs.com/yjf512/p/5314345.html" target="_blank">PHP的错误机制总结</a>
-             </h2>
-             <div class="entry_summary">PHP
-的错误机制总结 PHP的错误机制也是非常复杂的，做了几年php，也没有仔细总结过，现在就补上这一课。 特别说明：文章的PHP版本使用5.5.32
- PHP的错误级别 首先需要了解php有哪些错误。截至到php5.5，一共有 "16个错误级别" 
-注意：尝试下面的代码的时候请确保打开error_lo
-	          </div>
-	          <div class="clear"></div>
-	          <div class="entry_footer"> <span class="post_comment"><a class="grayline" title="最新评论时间：1/1/0001 12:00:00 AM" href="http://www.cnblogs.com/yjf512/p/5314345.html#commentform"> 评论(0)</a></span> <span class="post_view"><a class="grayline" href="http://www.cnblogs.com/yjf512/p/5314345.html">阅读(36)</a></span> 推荐(1) 发布于 <span class="postdate">2016-03-24 10:13</span></div>
-	          <div class="clear"></div>
-           </div>
-           <div class="clear"></div>
-       </div>
        
     </div>   
  </div>
 
 </div>
-                <div id="right_sidebar">
 
+
+                <div id="right_sidebar">
+                         <input type="hidden" name="stype11" value="${stype11}"/>
+                         <input  name="userId" value="${sessionScope.SESSION_USERID}"/>
                 </div>
                 <div class="clear"></div>
 </div>
