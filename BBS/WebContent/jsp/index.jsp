@@ -17,7 +17,7 @@
 
     
     <script src="${ctx}/js/favorite.js"></script> --%>
-    <script type="text/javascript" src="${ctx}/js/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="${ctx}/js/comme/jquery-1.9.0.min.js"></script>
     <script src="${ctx}/js/index.js"></script>
 
 </head>
@@ -45,10 +45,9 @@
 				        欢迎你，<%=username %>
 				</h1>
 				<div id="header_user_right">
-				        <a href="http://home.cnblogs.com/u/wuxiaojuan/"><img class="pfs" src="${ctx}/images/sample_face.gif" alt=""></a>
-				        <a href="http://home.cnblogs.com/u/wuxiaojuan/"><%=username %></a>
-				        · <a href="http://www.cnblogs.com/wuxiaojuan/">我的博客</a>
-				        · <a href="http://home.cnblogs.com/set/account/">设置</a>
+				        <a href="#"><img class="pfs" src="${ctx}/images/sample_face.gif" alt=""></a>
+				        <a href="#"><%=username %></a>
+				        · <a href="#">我的博客</a>
 				        · <a href="${ctx}/home/logout.do" onclick="return logout();">退出</a>
 				</div>
 
@@ -123,7 +122,7 @@
 
                 <div id="right_sidebar">
                          <input type="hidden" name="stype11" value="${stype11}"/>
-                         <input  name="userId" value="${sessionScope.SESSION_USERID}"/>
+                         <input  name="userId" type="hidden" value="${sessionScope.SESSION_USERID}"/>
                 </div>
                 <div class="clear"></div>
 </div>

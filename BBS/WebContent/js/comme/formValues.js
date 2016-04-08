@@ -1,8 +1,8 @@
 ﻿(function ($) {
     $.fn.getjsonvalues = function () {
-        var retVal = new Array();
+        var retVal = {};
         $(this).find(":input").each(function () {
-            if ($(this).attr("type") == "text" || $(this).attr("type") == "hidden" || $(this).attr("type") == "file")
+            if ($(this).attr("type") == "text" || $(this).attr("type") == "hidden" || $(this).attr("type") == "file"||$(this)[0].tagName.toLowerCase() == "textarea")
             {
                 var name = $(this).attr("name");
                 var value = $.trim($(this).val());
@@ -19,7 +19,15 @@
                 retVal[name] = value;
             }
         });
-        console.log(retVal);
         return retVal;
     };
 })(jQuery);
+
+
+var comme={
+	//type:post,get
+	jsonAjax:function(url,prams,type){
+		
+	 }
+	
+};

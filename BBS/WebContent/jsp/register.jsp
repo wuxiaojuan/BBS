@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="${ctx}/css/login2.css">
-<script type="text/javascript" src="${ctx}/js/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="${ctx}/js/comme/jquery-1.9.0.min.js"></script>
 <script type="text/javascript" src="${ctx}/js/login.js"></script>
 <title>登陆注册页面</title>
 </head>
@@ -99,7 +99,6 @@
                     </div>
                    
                 </li>
-                
                 <li>
                     <div class="inputArea">
                         <input type="button" id="reg"  style="margin-top:10px;margin-left:85px;width:150px;" class="button_blue" value="注册"/>

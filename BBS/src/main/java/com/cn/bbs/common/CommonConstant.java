@@ -19,6 +19,10 @@ public class CommonConstant {
 	public static final String SESSION_USERID = "SESSION_USERID";
 	
 	
+	public static final String MANAGER_TYPE = "2";
+	
+	public static final String USER_TYPE = "1";
+	
 	public static final int BLOG_NORMAL= 1;
 	
 }

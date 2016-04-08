@@ -114,6 +114,7 @@ public class BlogController extends BaseController{
 		
 		String userId=getSessionUserId(request);
 		
+		
 		modelMap.addAttribute("blog",blog);
 		modelMap.addAttribute("userId",userId);
 		
@@ -144,6 +145,34 @@ public class BlogController extends BaseController{
 		
 	}
 	
+	
+	/***
+	 * 跟据id查找博客评论
+	 * @param aid
+	 * @param modelMap
+	 * @param request
+	 * @return
+	 * @throws IOException 
+	 */
+	@RequestMapping(value="/findCommentByAid.do")
+	public String findCommentByAid(@RequestParam("aid") String aid,ModelMap modelMap,HttpServletRequest request,HttpServletResponse response) throws IOException{
+		
+		
+		List<Comment> coList=blogService.getCommentByAid(aid);
+		
+		modelMap.addAttribute("coList",coList);
+		
+		JSONArray jr = JSONArray.fromObject(coList);
+		response.setContentType("text/xml;charset=UTF-8");  
+		PrintWriter out =  response.getWriter();
+		out.print(jr.toString());
+		out.flush();
+		out.close();
+		
+		return "bolgView";
+		
+	}
+	
 	/***
 	 * 跟据type查找博客  1:发布  2:草稿
 	 * @param modelMap
@@ -167,16 +196,24 @@ public class BlogController extends BaseController{
 	}
 	
 	@RequestMapping(value="/addComment.do")
-	public String addComment(@RequestParam("userId") String userId,@RequestParam("content") String content,@RequestParam("aid") String aid,ModelMap modelMap,HttpServletRequest request){
-		Comment co=new Comment();
-		co.setAid(aid);
-		co.setContent(content);
-		co.setUserId(userId);
-		co.setCreateTime(DateUtil.getDateTime());
-		blogService.addComment(co);
+	public String addComment(@RequestParam("userId") String userId,@RequestParam("content") String content,@RequestParam("aid") String aid,ModelMap modelMap,HttpServletRequest request,HttpServletResponse response) throws IOException{
+		if(!StringUtill.isEmty(userId)){
+			Comment co=new Comment();
+			co.setAid(aid);
+			co.setContent(content);
+			co.setUserId(userId);
+			co.setCreateTime(DateUtil.getDateTime());
+			blogService.addComment(co);
+			JSONArray jr = JSONArray.fromObject(co);
+			response.setContentType("text/xml;charset=UTF-8");  
+			PrintWriter out =  response.getWriter();
+			out.print(jr.toString());
+			out.flush();
+			out.close();
+			
+		}
 		
-		
-		return "bolgView";
+		return null;
 		
 	}
 	

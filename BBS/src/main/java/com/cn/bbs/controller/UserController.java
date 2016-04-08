@@ -36,10 +36,14 @@ public class UserController {
 	@RequestMapping(value="/register.do")
 	public String register(@RequestParam("username") String username,
 			@RequestParam("password") String password,
+			@RequestParam("type") String type,
 			@RequestParam("qq") String qq,HttpServletRequest request,
 			ModelMap modelMap){
 
 		UserInfo user=new UserInfo();
+		if(StringUtill.isEmty(type)){
+			type="1";
+		}
 		user.setUsername(username);
 		user.setPassword(password);
 		user.setQq(qq);
@@ -51,9 +55,12 @@ public class UserController {
 		    modelMap.addAttribute("message","该用户名已存在！"); 
 			return "register";
 		}
+		if(type.equals("1")){
+			return "index";
+		}else{
+			return "back/index";
+		}
 		
-		
-		return "index";
 	}
 	
 	
@@ -93,6 +100,9 @@ public class UserController {
 		}
 		if ("5".equals(temp)) {
 			request.setAttribute("msg", "请先登录");
+		}
+		if ("6".equals(temp)) {
+			request.setAttribute("message", "请注册");
 		}
 		return "register";
 	}

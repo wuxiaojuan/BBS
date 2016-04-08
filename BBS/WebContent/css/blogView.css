@@ -1,0 +1,111 @@
+#container{padding-bottom: 30px;}
+#main{}
+#section_left{
+	float:left;font-size:13px;
+	}
+#wrapper_comment{margin:0 auto;width:1000px;margin-top: 15px;padding-bottom: 50px;background-color:white;}	
+#wrapper_feed{margin:0 auto;width:1000px;margin-top: 15px;background-color:white;}	
+.comment{
+	color:#7d8b8d;
+	font-size:13px;
+	border: 1px solid #e8e8e8;
+	padding-top: 15px;
+	padding-bottom: 30px;
+}	
+
+textarea.comment_textarea {
+	padding:10px 0 0px 10px;
+    line-height: 1.6;
+    border: 1px solid #ccc;
+    font-size: 13px;
+    height: 300px;
+    width: 50%;
+    
+}
+
+.textArea{
+	margin:10px 0 0 30px;
+	
+}
+.textarButton{
+	padding:10px 0 20px 30px;
+}
+.blogContent{
+	padding:0 20px 0 20px;
+	text-align: left;
+	color:#353535;
+	line-height:7mm;
+	font-family:¿¬Ìå;
+	font-size: 17px;
+}
+	
+.blogTitle{
+	border-bottom: 1px dashed #e8e8e8;
+    margin-bottom: 20px;
+    padding: 5px 5px 5px;
+}
+.blogTitle1{
+	text-align: center;
+	font-weight: bold;
+	font-family:¿¬Ìå;
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+.blogUser{
+	padding:0 20px 0 20px;
+	text-align: left;
+	color:gray;
+	font-size: 12px;
+}
+input.Button {
+    background: #6b86b3 none repeat scroll 0 0;
+    border: 1px solid #333333;
+    color: #ffffff;
+    cursor: pointer;
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    height: 26px;
+    line-height: 22px;
+    margin-right: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 70px;
+}
+.feedList{
+	margin: 0 20px 0px 20px;
+	
+}
+.feedbackItem {
+    margin-top: 15px;
+}
+
+.feedbackListSubtitle {
+    padding: 0 5px;
+}
+
+.feedbackManage {
+    float: left;
+    line-height: 26px;
+}
+.blog_comment_body {
+    word-wrap: break-word;
+}
+.comment_vote {
+    text-align: right;
+}
+.feedbackCon{
+    border: 1px dashed #dedede;
+    margin: 8px 0;
+    padding: 10px;
+}
+input.author {
+    background-position: 3px -3px;
+    height: 29px;
+    color:black;
+	font-size:15px;
+	padding-left: 10px;
+}
+.author_div{
+	margin: 10px 20px 20px 30px;
+}

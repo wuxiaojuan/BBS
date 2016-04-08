@@ -1,54 +1,9 @@
-#container{}
+#container{padding-bottom: 30px;}
 #main{}
 #post_list{margin-top:20px;margin-left:10px;}
 #section_left{
 	float:left;font-size:13px;
 	}
-	
-.comment{
-	color:#7d8b8d;
-	font-size:13px;
-	border: 1px solid #e8e8e8;
-	margin-top: 40px;
-	padding-bottom: 80px;
-}	
-
-textarea.comment_textarea {
-	margin:10px 0 10px 30px;
-    line-height: 1.6;
-    border: 1px solid #ccc;
-    font-size: 13px;
-    height: 300px;
-    width: 50%;
-    
-}
-.blogContent{
-	padding:0 20px 0 20px;
-	text-align: left;
-	color:#353535;
-	line-height:7mm;
-	font-family:¿¬Ìå;
-	font-size: 17px;
-}
-	
-.blogTitle{
-	border-bottom: 1px dashed #e8e8e8;
-    margin-bottom: 20px;
-    padding: 5px 5px 5px;
-}
-.blogTitle1{
-	text-align: center;
-	font-weight: bold;
-	font-family:¿¬Ìå;
-	font-size: 20px;
-	margin-bottom: 20px;
-}
-.blogUser{
-	padding:0 20px 0 20px;
-	text-align: left;
-	color:gray;
-	font-size: 12px;
-}
 .selectClass{
 	width: 50%;
 	height: 30px;

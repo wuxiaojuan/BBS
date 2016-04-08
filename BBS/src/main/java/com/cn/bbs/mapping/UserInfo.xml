@@ -8,8 +8,8 @@
 		(#{username},#{password},#{qq})
 	</insert>
 
-	<select id="getuserbyname" parameterType="String" resultType="com.cn.bbs.model.UserInfo">
-		select * from t_user u where u.username = #{usernmae}
+	<select id="getuserbyname" parameterType="java.util.Map" resultType="com.cn.bbs.model.UserInfo">
+		select * from t_user u where u.username = #{usernmae} and type=#{type}
 	</select>
 	
 	
@@ -19,6 +19,10 @@
 		<if test=" _parameter != null and  _parameter != ''">
 			and u.username = #{_parameter}
 		</if>
+	</select>
+	
+    <select id="getUserInfolist" parameterType="String" resultType="com.cn.bbs.model.UserInfo">
+		select * from t_user u where type=#{type}
 	</select>
 
 </mapper>

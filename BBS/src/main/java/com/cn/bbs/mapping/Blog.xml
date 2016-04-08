@@ -29,13 +29,15 @@
 			from t_article a 
 			LEFT JOIN t_user u on a.userid=u.id 
 			left join t_section s on a.section_id =s.id
-			where a.aid = #{aid}
+			where a.aid = #{aid} order by a.create_time
 	
 	</select>
 	
 		
     <select id="getCommentByAid" parameterType="String" resultType="com.cn.bbs.model.Comment">
-		select * from t_comment a where a.aid = #{aid}
+		       select a.aid,a.cid,a.content,a.create_time as createTime,a.userid ,u.username from t_comment a 
+				   LEFT JOIN t_user u on u.id=a.userid
+				where a.aid =#{aid}
 	</select>
 	
     <select id="getBlogByUserId" parameterType="String" resultType="com.cn.bbs.model.Blog">

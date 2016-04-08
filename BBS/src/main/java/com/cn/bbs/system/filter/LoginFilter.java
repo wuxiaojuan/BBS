@@ -31,14 +31,19 @@ public class LoginFilter extends OncePerRequestFilter {
 		WebApplicationContext wac = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		UserService userservice = (UserService) wac.getBean("userservice");
 		String username = request.getParameter("username");
+		String type = request.getParameter("type");
 		String password = request.getParameter("password");
-		UserInfo user = userservice.login(username);
+		UserInfo user = userservice.login(username,type);
 		if (user != null) {
 			if (MD5Util.md5Encode(password).equals(user.getPassword())) {
 				user.setPassword(null);
 				request.getSession().setAttribute(CommonConstant.SESSION_USERNAME, user.getUsername());
 				request.getSession().setAttribute(CommonConstant.SESSION_USERID, user.getId());
-				reqResponse.sendRedirect(request.getContextPath() + "/home/index.do?type=0");
+				if(type.equals("1")){
+					reqResponse.sendRedirect(request.getContextPath() + "/home/index.do?type=0");	
+				}else{
+					reqResponse.sendRedirect(request.getContextPath() + "/user/index.do");
+				}
 			} else {
 				reqResponse.sendRedirect(request.getContextPath() + "/home/loginUser.do?temp=2");
 			}

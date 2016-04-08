@@ -8,9 +8,10 @@ import com.cn.bbs.model.UserInfo;
 public interface UserService {
 	String adduser(UserInfo user);
 
-	UserInfo login(String username) ;
+	UserInfo login(String username,String type) ;
 
 	public long getUserInfoscount() throws Exception;
 
-	public List<UserInfo> getUserInfolist(String start, String end) throws Exception;
+
+	List<UserInfo> getUserInfolist(String type);
 }

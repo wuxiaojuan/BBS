@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>我的园子-写博</title>
 <link href="${ctx}/css/home_mvc.css" rel="stylesheet">
 <link href="${ctx}/css/blog.css" rel="stylesheet">
 </head>
-    <script type="text/javascript" src="${ctx}/js/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="${ctx}/js/comme/jquery-1.9.0.min.js"></script>
 <script type="text/javascript" src="${ctx}/ckeditor/ckeditor.js"></script>
 <script type="text/javascript" src="${ctx}/js/bolg.js"></script>
 <body>

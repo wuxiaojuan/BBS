@@ -42,8 +42,11 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserInfo login(String username) {
-		return userdao.getuser(username);
+	public UserInfo login(String username,String type) {
+		Map<String, String> map=new HashMap<String, String>();
+		map.put("username", username);
+		map.put("type", type);
+		return userdao.getuser(map);
 	}
 
 	@Override
@@ -51,12 +54,14 @@ public class UserServiceImpl implements UserService {
 	    	return userdao.getusercount("");
 	}
 
-	@Override
-	public List<UserInfo> getUserInfolist(String start, String end)
-			throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	/***
+	 * 1为普通用户，2为管理员
+	 */
+	public List<UserInfo> getUserInfolist(String type){
+		
+		return userdao.getUserInfolist(type);
 	}
+
 
 
 }
