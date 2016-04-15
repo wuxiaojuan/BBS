@@ -4,25 +4,44 @@
 
 	<insert id="saveuser" parameterType="com.cn.bbs.model.UserInfo">
 		insert into
-		t_user(USERNAME,PASSWORD,QQ) values
-		(#{username},#{password},#{qq})
+		t_user(USERNAME,PASSWORD,QQ,type) values
+		(#{username},#{password},#{qq},#{type})
 	</insert>
 
+
 	<select id="getuserbyname" parameterType="java.util.Map" resultType="com.cn.bbs.model.UserInfo">
-		select * from t_user u where u.username = #{usernmae} and type=#{type}
+		select * from t_user u where u.username = #{username} and type=#{type} and valid='1'
 	</select>
 	
 	
-	<select id="getusercountbyname" parameterType="String"
+	<select id="getusercountbyname" parameterType="java.util.Map"
 		resultType="int">
 		select count(1) from t_user u where 1=1
-		<if test=" _parameter != null and  _parameter != ''">
-			and u.username = #{_parameter}
+		<if test=" username != null and  username != ''">
+			and u.username = #{username}
+		</if>
+		<if test=" type != null and  type != ''">
+			and u.type = #{type}
 		</if>
 	</select>
 	
     <select id="getUserInfolist" parameterType="String" resultType="com.cn.bbs.model.UserInfo">
 		select * from t_user u where type=#{type}
 	</select>
+		
+     <update id="updateUser" parameterType="com.cn.bbs.model.UserInfo">
+		update t_user t set t.username=#{username} ,t.password=#{password} ,t.qq=#{qq} where t.id=#{id}
+	 </update>
+	 
+	 <delete id="deleteUserById" parameterType="String">
+	    delete from t_user where id=#{id}
+	 </delete>
+	 
+	 <update id="validById" parameterType="java.util.Map">
+		update t_user t set t.valid=#{valid} where t.id=#{id} 
+		<if test=" type != null and  type != ''">
+			and u.type = #{type}
+		</if>
+	 </update>
 
 </mapper>

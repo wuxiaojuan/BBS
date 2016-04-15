@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -24,10 +25,13 @@ import com.cn.bbs.system.utill.MD5Util;
  *
  */
 public class LoginFilter extends OncePerRequestFilter {
+	
+	private static Logger log = Logger.getLogger(LoginFilter.class);
 
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse reqResponse, FilterChain filter)
 			throws ServletException, IOException {
+		log.debug("wuxiaojuan-------------------");
 		WebApplicationContext wac = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		UserService userservice = (UserService) wac.getBean("userservice");
 		String username = request.getParameter("username");

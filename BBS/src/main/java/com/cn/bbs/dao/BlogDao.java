@@ -11,6 +11,8 @@ public interface BlogDao {
 	
 	String addblog(Blog blog);
 	
+	public int editblog(Blog blog);
+	
 	String addComment(Comment co);
 	
 	String addSection(Section se);
@@ -26,6 +28,12 @@ public interface BlogDao {
 	public List<Section> getSectionList();
 	
 	public List<Comment> getCommentByAid(String aid);
+	
+	public String editSection(Section se);
+	
+	public int deleteCommentById(String id);
+	
+	public int deleteSectionById(String id);
 	
 	
 }

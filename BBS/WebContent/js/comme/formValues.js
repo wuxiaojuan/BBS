@@ -21,13 +21,14 @@
         });
         return retVal;
     };
+    $.fn.setjsonvalues = function (jsonValue) {
+        for (var key in jsonValue) {
+            var input = $(this).find("[name='" + key + "']");
+            if (typeof (input) != "undefined") {
+                $(input).val(jsonValue[key]);
+            }
+        }
+    };
 })(jQuery);
 
 
-var comme={
-	//type:post,get
-	jsonAjax:function(url,prams,type){
-		
-	 }
-	
-};

@@ -42,14 +42,13 @@
             <li class="menu-list">
                <a style="cursor:pointer" class="firsta"><i  class="glyph-icon xlcd"></i>普通用户管理<s class="sz"></s></a>
                 <ul>
-                    <li><a href="/BBS/jsp/back/userList.jsp" target="menuFrame"><i class="glyph-icon icon-chevron-right2"></i>普通用户列表</a></li>
+                    <li><a href="${ctx}/user/userList.do" target="menuFrame"><i class="glyph-icon icon-chevron-right2"></i>普通用户列表</a></li>
                 </ul>
             </li>
             <li class="menu-list">
                <a style="cursor:pointer" class="firsta"><i  class="glyph-icon xlcd"></i>版块管理<s class="sz"></s></a>
                 <ul>
-                    <li><a href="/BBS/jsp/back/sectionList.jsp" target="menuFrame"><i class="glyph-icon icon-chevron-right2"></i>版块列表</a></li>
-                    <li><a href="/BBS/jsp/back/bolgList.jsp" target="menuFrame"><i class="glyph-icon icon-chevron-right1"></i>新增版块</a></li>
+                    <li><a href="${ctx}/bblog/findSections.do" target="menuFrame"><i class="glyph-icon icon-chevron-right2"></i>版块列表</a></li>
                 </ul>
             </li>
             <li class="menu-list">
@@ -65,7 +64,7 @@
     <div id="right-content" class="right-content">
         <div class="content">
             <div id="page_content">
-                <iframe id="menuFrame" name="menuFrame" src="/BBS/jsp/back/managerList.jsp" style="overflow:visible;"
+                <iframe id="menuFrame" name="menuFrame" src="${ctx}/bblog/findSections.do" style="overflow:visible;"
                         scrolling="yes" frameborder="no" width="100%" height="100%"></iframe>
             </div>
         </div>

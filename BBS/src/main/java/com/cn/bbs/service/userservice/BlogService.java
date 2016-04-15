@@ -12,9 +12,13 @@ public interface BlogService {
 	
 	public String addblog(Blog blog);
 
+	public int editblog(Blog blog);
+	
 	public String addComment(Comment co);
 	
 	public String addSection(Section se);
+	
+	public String editSection(Section se);
 	
 	public Blog getBlogById(String id);
 	

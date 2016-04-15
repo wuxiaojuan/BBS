@@ -14,4 +14,19 @@ public interface UserService {
 
 
 	List<UserInfo> getUserInfolist(String type);
+	
+	public int deleteUser(String id);
+	
+	public int updateUser(UserInfo user);
+	
+	/***
+	 * type 1普通用户  2管理员
+	 * @param id
+	 * @param type
+	 * @return
+	 */
+	public int disable(String id,String type);
+	
+	public int enable(String id,String type);
+	
 }

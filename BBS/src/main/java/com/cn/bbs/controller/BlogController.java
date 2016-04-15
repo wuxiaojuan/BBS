@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -29,6 +29,8 @@ import com.cn.bbs.utill.StringUtill;
 @RequestMapping("/blog")
 public class BlogController extends BaseController{
 	
+	private static Logger log = Logger.getLogger(BaseController.class);
+	
 	@Autowired
 	BlogService blogService;
 	
@@ -43,7 +45,7 @@ public class BlogController extends BaseController{
 	@RequestMapping(value="/toAddBlog.do")
 	public String toAddBlog(HttpServletRequest request,
 			ModelMap modelMap){
-
+        
 		String userId=getSessionUserId(request);
 		if(StringUtill.isEmty(userId)){
 			return "register";
@@ -51,6 +53,36 @@ public class BlogController extends BaseController{
 		List<Section> list=blogService.getSectionList();
 		
 		modelMap.addAttribute("sectionList",list); 
+
+		return "addBolg";
+	}
+	
+	/***
+	 * 转到 修改博客页面
+	 * @param request
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value="/toeditBlog.do", method = RequestMethod.GET)
+	public String toeditBlog(@RequestParam("temp") String temp,@RequestParam("aid") String aid,HttpServletRequest request,
+			HttpServletResponse response){
+        
+		String userId=getSessionUserId(request);
+		if(StringUtill.isEmty(userId)){
+			return "register";
+		}
+		List<Section> list=blogService.getSectionList();
+		
+		request.setAttribute("sectionList",list); 
+
+        //String temp=(String)request.getAttribute("temp");
+        if(!StringUtill.isEmty(temp)){
+        	if(temp.equals("1")){//草稿
+        		//String aid=(String)request.getAttribute("aid");
+        		Blog blog=blogService.getBlogById(aid);
+        		request.setAttribute("blog",blog); 
+        	}
+		}
 		
 		
 		return "editBolg";
@@ -100,6 +132,51 @@ public class BlogController extends BaseController{
 		return "index";
 	}
 	
+	
+	/***
+	 * 
+	 * 修改博客
+	 * @param type
+	 * @param title
+	 * @param content
+	 * @param sectionId
+	 * @param request
+	 * @param reqResponse
+	 * @param modelMap
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping(value="/editBlog.do")
+	public String editBlog(@RequestParam("type") String type,//1:发布  2:草稿
+			@RequestParam("title") String title,
+			@RequestParam("aid") String aid,
+			@RequestParam("content") String content,
+			@RequestParam("sectionId") String sectionId,HttpServletRequest request, HttpServletResponse reqResponse,
+			ModelMap modelMap) throws IOException{
+
+		String userId=getSessionUserId(request);
+		if(StringUtill.isEmty(userId)){
+			return "register";
+		}else{
+			Blog blog=new Blog();
+			blog.setContent(content);
+			blog.setTitle(title);
+			blog.setType(type);
+			blog.setAid(aid);
+			blog.setSectionId(sectionId);
+			blog.setCreateTime(DateUtil.getDateTime());
+			blog.setUserId(userId);
+			String  i=blogService.addblog(blog);
+			
+			if(!i.equals("0")){
+				/*return "redirect:/blog/findBlogByAid.do?aid="+blog.getAid();*/
+				reqResponse.sendRedirect(request.getContextPath() + "/blog/findBlogByAid.do?aid="+blog.getAid());
+			}
+			
+		}
+		return "index";
+	}
+	
 	/***
 	 * 跟据id查找博客
 	 * @param aid
@@ -110,6 +187,8 @@ public class BlogController extends BaseController{
 	@RequestMapping(value="/findBlogByAid.do")
 	public String findBlogByAid(@RequestParam("aid") String aid,ModelMap modelMap,HttpServletRequest request){
 		
+		
+		log.info(aid+":查找此id的博客--------------");
 		Blog blog=blogService.getBlogById(aid);
 		
 		String userId=getSessionUserId(request);
@@ -181,9 +260,9 @@ public class BlogController extends BaseController{
 	 * @throws IOException 
 	 */
 	@RequestMapping(value="/getBlogByTypeAndUser.do")
-	public String getBlogByTypeAndUser(@RequestParam("type") int type,@RequestParam("userId") String userId,HttpServletRequest request,HttpServletResponse response) throws IOException{
+	public String getBlogByTypeAndUser(@RequestParam("type") String type,@RequestParam("userId") String userId,HttpServletRequest request,HttpServletResponse response) throws IOException{
 		
-		List<Blog> blog=blogService.getBlogByTypeAndUser(type+"", userId);
+		List<Blog> blog=blogService.getBlogByTypeAndUser(type, userId);
 		
 		JSONArray jr = JSONArray.fromObject(blog);
 		response.setContentType("text/xml;charset=UTF-8");  

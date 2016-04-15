@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public String adduser(UserInfo user) {
 		String id = null;
-		int uesercout = userdao.getusercount(user.getUsername());
+		int uesercout = userdao.getusercount(user.getUsername(),user.getType());
 		try {
 			if (uesercout > 0) {
 				id = "0";
@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public long getUserInfoscount() throws Exception {
-	    	return userdao.getusercount("");
+	    	return userdao.getusercount("",null);
 	}
 
 	/***
@@ -60,6 +60,36 @@ public class UserServiceImpl implements UserService {
 	public List<UserInfo> getUserInfolist(String type){
 		
 		return userdao.getUserInfolist(type);
+	}
+
+	@Override
+	public int deleteUser(String id) {
+		// TODO Auto-generated method stub
+		 return userdao.deleteUser(id);
+	}
+
+	@Override
+	public int updateUser(UserInfo user) {
+		user.setPassword(MD5Util.md5Encode(user.getPassword()));
+		return userdao.updateUser(user);
+	}
+
+	@Override
+	public int disable(String id,String type) {
+		Map<String, String> map=new HashMap<String, String>();
+		map.put("id", id);
+		map.put("valid", "0");
+		map.put("type", type);
+		return userdao.valid(map);
+	}
+
+	@Override
+	public int enable(String id,String type) {
+		Map<String, String> map=new HashMap<String, String>();
+		map.put("id", id);
+		map.put("valid", "1");
+		map.put("type", type);
+		return userdao.valid(map);
 	}
 
 

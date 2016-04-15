@@ -12,8 +12,15 @@ public interface UserDao {
 	
 	public UserInfo getuser(Map<String, String> map);
 	
-	public int getusercount(String username);
+	public int getusercount(String username,String type);
 	public List<UserInfo> getUserInfolist(String type);
+	
+	
+	public int deleteUser(String id);
+	
+	public int updateUser(UserInfo user);
+	
+	public int valid(Map<String, String> map);
 
 /*	
 

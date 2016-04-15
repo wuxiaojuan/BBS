@@ -8,6 +8,10 @@
 			(#{userId},#{title},#{content},#{createTime},#{sectionId},#{type})
 	</insert>
 	
+    <update id="editblog" parameterType="com.cn.bbs.model.Blog">
+			update t_article set title=#{title},content=#{content},section_id=#{sectionId},type=#{type} where aid=#{aid}
+	</update>
+	
 	
     <insert id="addComment" parameterType="com.cn.bbs.model.Comment" useGeneratedKeys="true" keyProperty="cid">
 			insert into
@@ -54,10 +58,34 @@
 			where  a.type = #{type} order by a.create_time desc
 	</select>
 	
+    <select id="getBlogByTypeAndUser" parameterType="java.util.Map" resultType="com.cn.bbs.model.Blog">
+		select a.aid,a.userid,a.title,a.content,
+			       a.create_time as createTime,a.section_id as sectionId,a.type,
+			       u.username,s.`name` as sectionName
+			from t_article a 
+			LEFT JOIN t_user u on a.userid=u.id 
+			left join t_section s on a.section_id =s.id
+			where  a.type = #{type} and a.userId=#{userId} order by a.create_time desc
+	</select>
+	
 	
 	<select id="getSectionList"  resultType="com.cn.bbs.model.Section">
-		select * from t_section
+		select s.id,s.`name`,s.create_date as createDate,u.username as createUser ,s.remarks   from t_section s LEFT JOIN t_user u on s.create_user=u.id
 	</select>
+	
+	<update id="editSection" parameterType="com.cn.bbs.model.Section">
+	    update t_section t set t.name=#{name} ,t.remarks=#{remarks}  where t.id=#{id}
+	
+	</update>
+	
+	
+	  <delete id="deleteSectionById" parameterType="String">
+	    delete from t_section where id=#{id}
+	 </delete>
+	 
+	 <delete id="deleteCommentById" parameterType="String">
+	    delete from t_comment where cid=#{id}
+	 </delete>
 	
 
 

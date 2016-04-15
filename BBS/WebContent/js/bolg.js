@@ -17,20 +17,17 @@ $(document).ready(function() {
 	
     /*保存草稿*/
 	$('#savedraft').click(function() {
-		
-
-
-
+		$('#bolgForm').find("input[name=type]").val("2");
 		$('#bolgForm').submit();
 	});
 	
-	   /*清空*/
+/*	   清空
 	$('#bolgForm').find("input[name=resertbutton]").click(function() {
 			document.getElementById("bolgForm").reset(); 
 			var s = new CKEDITOR.instances.content("TextArea1")
 			s.clearCustomData();
 	
-	});
+	});*/
 	
 	   /*关闭*/
 	$('#bolgForm').find("input[name=clossbutton]").click(function() {

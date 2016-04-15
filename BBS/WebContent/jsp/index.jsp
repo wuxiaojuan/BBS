@@ -31,7 +31,8 @@
   %>
     <div id="top">
         <div id="top_left">
-            <a href="${ctx}/home/index.do?type=0">首页</a><a href="${ctx}/blog/toAddBlog.do">写博</a><a href="#">我的收藏</a><a href="#">我的博客</a><a href="${ctx}/home/logout.do">退出</a>
+            <a href="${ctx}/home/index.do?type=0">首页</a><a href="${ctx}/blog/toAddBlog.do">写博</a><a href="#">我的收藏</a><a href="#">我的博客</a><a href="${ctx}/home/logout.do">
+                          退出/登陆</a>
         </div>
     </div>
      <div class="clear"></div>
@@ -48,7 +49,7 @@
 				        <a href="#"><img class="pfs" src="${ctx}/images/sample_face.gif" alt=""></a>
 				        <a href="#"><%=username %></a>
 				        · <a href="#">我的博客</a>
-				        · <a href="${ctx}/home/logout.do" onclick="return logout();">退出</a>
+				        · <a href="${ctx}/home/logout.do" onclick="return logout();">退出/登陆</a>
 				</div>
 
 	   </div>
@@ -106,7 +107,7 @@
             <a href="#" class="" name="2">我的收藏</a>
         </li>
         <li>
-            <a href="#" class="" name="3">我的推存</a>
+             <a href="#" class="" name="2">我的草稿</a>
         </li>
     </ul>
     <div class="clear"></div>

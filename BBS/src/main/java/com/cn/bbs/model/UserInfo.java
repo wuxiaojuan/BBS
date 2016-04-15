@@ -10,6 +10,29 @@ public class UserInfo  {
 	private String id;
 	private String username;
 	private String password;
+	private Long valid;
+	private String type;
+	
+	
+	
+	
+	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public Long getValid() {
+		return valid;
+	}
+
+	public void setValid(Long valid) {
+		this.valid = valid;
+	}
+
 	private String qq;
 
 

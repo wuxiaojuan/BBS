@@ -19,13 +19,15 @@ $(document).ready(function() {
 		
 		if(type==0){//首页
 			 blogAjax("/BBS/blog/findBlogByType.do",{type:1});
-		}else if(type==1){//我的博客
-			if(userId==""){
-				$("#main div.feed_block").html("<h2 class='entry_title'>请先登陆</h2>");
-			}else{
-				 blogAjax("/BBS/blog/getBlogByTypeAndUser.do",{type:1,userId:userId});
+		}else if(userId!=""){
+			if(type==1){//我的博客
+				 blogAjax("/BBS/blog/getBlogByTypeAndUser.do",{type:"1",userId:userId});
+			}else if(type==2){//我的草稿
+				 blogAjax("/BBS/blog/getBlogByTypeAndUser.do",{type:"2",userId:userId});
 			}
 			
+		}else if(userId==""){
+			$("#main div.feed_block").html("<h2 class='entry_title'>请先登陆</h2>");
 		}
 		
 	}

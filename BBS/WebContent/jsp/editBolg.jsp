@@ -11,8 +11,32 @@
 </head>
 <script type="text/javascript" src="${ctx}/js/comme/jquery-1.9.0.min.js"></script>
 <script type="text/javascript" src="${ctx}/ckeditor/ckeditor.js"></script>
-<script type="text/javascript" src="${ctx}/js/bolg.js"></script>
 <body>
+<script type="text/javascript">
+$(function(){
+	/*发布*/
+	$('#regsubmit').click(function() {
+		
+		$('#bolgForm').submit();
+	});
+	
+	/*保存草稿*/
+	$('#savedraft').click(function() {
+		$('#bolgForm').find("input[name=type]").val("2");
+		$('#bolgForm').submit();
+	});
+	
+	   /*关闭*/
+	$('#bolgForm').find("input[name=clossbutton]").click(function() {
+		if (confirm("您确定要关闭本页吗？")) {
+				window.opener = null;
+				window.open('', '_self');
+				window.close();
+			}
+	
+	});
+})
+</script>
 
     <div id="top">
         <div id="top_left">
@@ -28,7 +52,7 @@
 	      </div>
 	      <div class="clear"></div>
 	      <div id="header_user"><h1 id="header_user_left">
-					<img src="${ctx}/images/ico_blog.gif" style="margin-right: 10px;">添加博客
+					<img src="${ctx}/images/ico_blog.gif" style="margin-right: 10px;">修改博客
 					</h1>
 					<div id="header_user_right">
 					        <a href="http://home.cnblogs.com/u/wuxiaojuan/"><img class="pfs" src="${ctx}/images/ico_question.gif" alt=""></a>
@@ -41,25 +65,29 @@
 	       <div class="clear"></div>
 	    </div>
         <div id="container">
-          <form action="${ctx}/blog/addBlog.do" id="bolgForm" method="post">
+          <form action="${ctx}/blog/editBlog.do" id="bolgForm" method="post">
 	           <input type="hidden" name="type" value="1"/>
-	           
 	           <p class="entry_title" style="font-weight: bold;">选择版块</p> 
 	           <select name="sectionId" class="selectClass">
-	               <option value="0" >- - - 请选择  - - -</option>
 	         	   <c:forEach var="v" items="${sectionList}">
-						    <option value="${v.id}">${v.name}</option>
+				    	<c:choose>
+							<c:when test="${v.id==blog.sectionId}">
+								<option value="${v.id}" selected="selected">${v.name}</option>
+							</c:when>
+							<c:otherwise>
+								<option value="${v.id}">${v.name}</option>
+							</c:otherwise>
+						</c:choose>
 					</c:forEach>
 			    </select>
-	           
+	           <input type="hidden" name="aid" value="${blog.aid}"/>
 	           <p class="entry_title" style="font-weight: bold;">标题</p> 
-	           <input name="title" style="width: 100%;height: 30px;" />
+	           <input name="title" style="width: 100%;height: 30px;" value="${blog.title}"/>
 	           <p class="entry_title" style="font-weight: bold;">内容</p> 
-	           <textarea id="TextArea1" cols="20" rows="2" class="ckeditor" name="content"></textarea>
+	           <textarea id="TextArea1" cols="20" rows="2" class="ckeditor" name="content">${blog.content}</textarea>
 	           <div style="margin:20px 0 150px 20px;">
 	             <input class="Button" id="regsubmit" type="button" value="发布"/>
 	             <input class="Button" id="savedraft" type="button" value="保存草稿"/>
-	             <input class="Button" name="resertbutton" type="button" value="清空"/>
 	             <input class="Button" name="clossbutton" type="button" value="关闭"/>
 	            </div>
            </form>

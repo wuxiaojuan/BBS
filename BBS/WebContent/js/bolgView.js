@@ -2,14 +2,22 @@ $(document).ready(function() {
 	
 	var userId=$('#comForm').find("input[name=userId]").val();
 	
-	if(userId==""){
+	var type=$('#blogtypeid').val();
+	
+	if(type==2){//草稿
+		var parms=$('#comForm').getjsonvalues();
+		$("#wrapper_comment").css('display','none'); 
+		$("#wrapper_feed div.comment").html("当前为你的草稿：可<a href='/BBS/blog/toeditBlog.do?temp=1&aid="+parms.aid+"'>修改</a>");
+		//$("#wrapper_feed").hide();
+		
+	}else if(userId==""){
 		$("#wrapper_comment .comment").html("&nbsp;&nbsp;&nbsp;&nbsp;注册用户登录后才能发表评论，请 <a href='/BBS/home/logout.do'>登录</a> 或 <a href='/BBS/home/loginUser.do?temp=6'>注册</a>。");
-	}
 
+	}
+	
     /*发布评论*/
 	$('#comForm').find("input[name=comButton]").click(function() {
 		var parms=$('#comForm').getjsonvalues();
-		console.log(parms);
 		 $.ajax({
 				type: 'post',
 				url: "/BBS/blog/addComment.do",

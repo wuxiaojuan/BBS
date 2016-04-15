@@ -1,5 +1,6 @@
 package com.cn.bbs.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,13 +25,35 @@ public class UserDaoImpl extends SqlMapSupport<UserInfo> implements UserDao {
 	}
 	
 	
-	public int getusercount(String username) {
+	public int getusercount(String username,String type) {
+		Map<String, String> map=new HashMap<String, String>();
+		map.put("username", username);
+		map.put("type", type);
+		
 		return (Integer) this.getSqlSession().selectOne(
-				"User.getusercountbyname", username);
+				"User.getusercountbyname", map);
 	}
 	
 	public List<UserInfo> getUserInfolist(String type) {
 		return this.getSqlSession().selectList("User.getUserInfolist", type);
+	}
+
+	@Override
+	public int deleteUser(String id) {
+		// TODO Auto-generated method stub
+		return this.getSqlSession().delete("User.deleteUserById", id);
+	}
+
+	@Override
+	public int updateUser(UserInfo user) {
+		// TODO Auto-generated method stub
+		return this.getSqlSession().update("User.updateUser", user);
+	}
+
+	@Override
+	public int valid(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		 return this.getSqlSession().delete("User.validById", map);
 	}
 
 	/*public int getusercount(String username) {

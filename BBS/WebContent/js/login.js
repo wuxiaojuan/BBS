@@ -94,28 +94,6 @@ $(document).ready(function() {
 			return false;
 
 		}
-/*		$.ajax({
-			type: reMethod,
-			url: "/home/checkUser.do",
-			data: "uid=" + $("#user").val() + '&temp=' + new Date(),
-			dataType: 'html',
-			success: function(result) {
-				if (result.length > 2) {
-					$('#user').focus().css({
-						border: "1px solid red",
-						boxShadow: "0 0 2px red"
-					});$("#userCue").html(result);
-					return false;
-				} else {
-					$('#user').css({
-						border: "1px solid #D7D7D7",
-						boxShadow: "none"
-					});
-				}
-
-			}
-		});*/
-
 
 		if ($('#passwd').val().length < pwdmin) {
 			$('#passwd').focus();

@@ -55,6 +55,30 @@ public class BlogDaoImpl extends SqlMapSupport<UserInfo> implements BlogDao {
 	public List<Comment> getCommentByAid(String aid) {
 		return this.getSqlSession().selectList("Blog.getCommentByAid",aid);
 	}
+
+	@Override
+	public String editSection(Section se) {
+		
+		return this.getSqlSession().update("Blog.editSection",se)+"";
+	}
+
+	@Override
+	public int deleteCommentById(String id) {
+		// TODO Auto-generated method stub
+		return this.getSqlSession().delete("Blog.deleteCommentById",id);
+	}
+
+	@Override
+	public int deleteSectionById(String id) {
+		// TODO Auto-generated method stub
+		return this.getSqlSession().delete("Blog.deleteSectionById",id);
+	}
+
+	@Override
+	public int editblog(Blog blog) {
+		// TODO Auto-generated method stub
+		return this.getSqlSession().update("Blog.editblog",blog);
+	}
 	
 	
 	

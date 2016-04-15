@@ -96,6 +96,7 @@
                     <div class="inputOuter2">
                        
                         <input type="text" id="qq" name="qq" maxlength="10" class="inputstyle2"/>
+                        <input type="hidden"  name="type" />
                     </div>
                    
                 </li>

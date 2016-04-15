@@ -11,7 +11,7 @@
 </head>
 <script type="text/javascript" src="${ctx}/js/comme/jquery-1.9.0.min.js"></script>
 <script type="text/javascript" src="${ctx}/js/comme/formValues.js"></script>
-<script type="text/javascript" src="${ctx}/js/bolgView.js"></script>
+<script type="text/javascript" src="${ctx}/js/bolgList.js"></script>
 
   <%
     String username = (String)request.getSession().getAttribute("SESSION_USERNAME");  
@@ -20,8 +20,7 @@
     }
    
   %>
-<body >
-<div >
+<body style="background-color: #7d8b8d;">
 
     <div id="top">
         <div id="top_left">
@@ -50,51 +49,14 @@
 	       <div class="clear"></div>
 	    </div>
         <div id="container">
-           <div class="blogTitle">
-                 <div class="blogTitle1">
-	            ${blog.title}
-	            </div>
-	            <div class="blogUser">
-	                                                  发布人：${blog.username} &nbsp;&nbsp;&nbsp;发布于：${blog.createTime}
-	            </div>
-	             <input type="hidden" name="aid" value="${blog.aid}"/>
-	       </div>
-	       <div class="blogContent">
-            ${blog.content}
-           </div>
+
          
         </div>
 
     </div>
+    <input type="text" name="flag"/>
     
 <div class="clear"></div>
-<input type="hidden" value="${blog.type}" id="blogtypeid"/> 
-<div id="wrapper_feed">
-    <div class="comment">
-        
-    </div>
-</div>
-    
-    <div id="wrapper_comment">
-        <div class="comment">
-              <p><img src="${ctx}/images/quote.gif" style="margin-right: 10px;">发表评论</p>
-              <form action="${ctx}/blog/addComment.do" id="comForm" method="post">
-                  <input type="hidden" name="userId" value="${sessionScope.SESSION_USERID}"/>
-                  <div class="author_div">
-                                                                           昵称：<input type="text" disabled="disabled" name="userName" size="35" class="author" value="${sessionScope.SESSION_USERNAME}"/>
-                  </div>
-                  <input type="hidden" name="aid" value="${blog.aid}"/>
-                  <div class='textArea'>
-                     <textarea name="content" class="comment_textarea"></textarea>
-                 </div>
-                 <div class="clear"></div>
-                 <div class="textarButton">
-                  <input class="Button" name="comButton" type="button" value="提交评论"/>
-                 </div>
-              </form>
-        
-        </div>
-     </div>
-     </div>
+
 </body>
 </html>
