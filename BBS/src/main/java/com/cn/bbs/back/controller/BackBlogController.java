@@ -115,6 +115,54 @@ public class BackBlogController extends BaseController{
 		
 	}
 	
+	
+	/***
+	 * ¸ú¾Ýid²éÕÒ²©¿Í
+	 * @param aid
+	 * @param modelMap
+	 * @param request
+	 * @return
+	 * @throws IOException 
+	 */
+	@RequestMapping(value="/findBlogByAid.do")
+	public String findBlogByAid(@RequestParam("aid") String aid,ModelMap modelMap,HttpServletRequest request,HttpServletResponse response) throws IOException{
+		
+		Blog blog=blogService.getBlogById(aid);
+		
+		modelMap.addAttribute("blog",blog);
+		JSONArray jr = JSONArray.fromObject(blog);
+		PrintWriter out = response.getWriter();
+		out.print(jr.toString());
+		out.flush();
+		out.close();
+		return null;
+		
+	}
+	
+	/***
+	 * É¾³ý°æ¿é
+	 * @param request
+	 * @param modelMap
+	 * @return
+	 * @throws IOException 
+	 */
+	@RequestMapping(value="/deleteBlog.do")
+	public String deleteBlog(@RequestParam("id") String id,HttpServletRequest request,HttpServletResponse response) throws IOException{
+		
+		blogService.deleteCommentByAid(id);
+		int q=blogService.deleteblog(id);
+		String flag="0";
+		if(q>0){
+			flag="1";
+		}
+		PrintWriter out =  response.getWriter();
+		out.print(flag);
+		out.flush();
+		out.close();
+		return null;
+		
+	}
+	
 	/***
 	 * É¾³ý°æ¿é
 	 * @param request

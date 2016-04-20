@@ -3,7 +3,6 @@ $(document).ready(function() {
 	var userId=$('#comForm').find("input[name=userId]").val();
 	
 	var type=$('#blogtypeid').val();
-	
 	if(type==2){//草稿
 		var parms=$('#comForm').getjsonvalues();
 		$("#wrapper_comment").css('display','none'); 
@@ -52,8 +51,10 @@ $(document).ready(function() {
 						}
 						$("#wrapper_feed div.comment").html("<p style='padding-left: 20px;'>评论列表</p>"+shtml);
 					}else{
+						if(type!=2){
+							$("#wrapper_feed div.comment").html("<p style='padding-left: 20px;'>暂没有评论，赶紧抢座吧！</p>");
+						}
 						
-						$("#wrapper_feed div.comment").html("<p style='padding-left: 20px;'>暂没有评论，赶紧抢座吧！</p>");
 					}
 					
 				}

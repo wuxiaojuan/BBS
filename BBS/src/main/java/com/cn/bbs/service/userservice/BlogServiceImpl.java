@@ -102,5 +102,17 @@ public class BlogServiceImpl implements BlogService {
 		return blogdao.editblog(blog);
 	}
 
+	@Override
+	public int deleteblog(String id) {
+		// TODO Auto-generated method stub
+		return blogdao.deleteblog(id);
+	}
+
+	@Override
+	public int deleteCommentByAid(String id) {
+		// TODO Auto-generated method stub
+		return blogdao.deleteCommentByAid(id);
+	}
+
 	
 }

@@ -33,6 +33,10 @@ public interface BlogDao {
 	
 	public int deleteCommentById(String id);
 	
+	public int deleteblog(String id);
+	
+	public int deleteCommentByAid(String id);
+	
 	public int deleteSectionById(String id);
 	
 	

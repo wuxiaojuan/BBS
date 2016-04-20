@@ -14,6 +14,10 @@ public interface BlogService {
 
 	public int editblog(Blog blog);
 	
+	public int deleteblog(String id);
+	
+	public int deleteCommentByAid(String id);
+	
 	public String addComment(Comment co);
 	
 	public String addSection(Section se);

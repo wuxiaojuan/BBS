@@ -86,6 +86,14 @@
 	 <delete id="deleteCommentById" parameterType="String">
 	    delete from t_comment where cid=#{id}
 	 </delete>
+	 
+	  <delete id="deleteblog" parameterType="String">
+	    delete from t_article where aid=#{id}
+	 </delete>
+	 
+	 <delete id="deleteCommentByAid" parameterType="String">
+	    delete from t_comment where aid=#{id}
+	 </delete>
 	
 
 

@@ -16,7 +16,7 @@
 
     <div id="top">
         <div id="top_left">
-            <a href="${ctx}/home/index.do?type=0">首页</a><a href="${ctx}/blog/toAddBlog.do">写博</a><a href="#">我的收藏</a><a href="#">我的博客</a><a href="${ctx}/home/logout.do">退出</a>
+            <a href="${ctx}/home/index.do?type=0">首页</a><a href="${ctx}/blog/toAddBlog.do">写博</a><a href="${ctx}/jsp/bolgList.jsp?flag=2" target="_blank">我的草稿</a><a href="${ctx}/jsp/bolgList.jsp?flag=1"  target="_blank">我的博客</a><a href="${ctx}/home/logout.do">退出</a>
         </div>
     </div>
     <div class="clear"></div>
@@ -31,9 +31,9 @@
 					<img src="${ctx}/images/ico_blog.gif" style="margin-right: 10px;">添加博客
 					</h1>
 					<div id="header_user_right">
-					        <a href="http://home.cnblogs.com/u/wuxiaojuan/"><img class="pfs" src="${ctx}/images/ico_question.gif" alt=""></a>
-					        <a href="http://home.cnblogs.com/u/wuxiaojuan/"></a>
-					        · <a href="http://www.cnblogs.com/wuxiaojuan/">我的博客</a>
+					        <a href="${ctx}/jsp/bolgList.jsp?flag=1"  target="_blank"><img class="pfs" src="${ctx}/images/ico_question.gif" alt=""></a>
+					        <a href="${ctx}/jsp/bolgList.jsp?flag=1"  target="_blank"></a>
+					        · <a href="${ctx}/jsp/bolgList.jsp?flag=1"  target="_blank">我的博客</a>
 					        · <a href="${ctx}/home/logout.do" onclick="return logout();">退出</a>
 					</div>
 	

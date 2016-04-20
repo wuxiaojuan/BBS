@@ -31,7 +31,7 @@
   %>
     <div id="top">
         <div id="top_left">
-            <a href="${ctx}/home/index.do?type=0">首页</a><a href="${ctx}/blog/toAddBlog.do">写博</a><a href="#">我的收藏</a><a href="#">我的博客</a><a href="${ctx}/home/logout.do">
+            <a href="${ctx}/home/index.do?type=0">首页</a><a href="${ctx}/blog/toAddBlog.do">写博</a><a href="${ctx}/jsp/bolgList.jsp?flag=2" target="_blank">我的草稿</a><a href="${ctx}/jsp/bolgList.jsp?flag=1"  target="_blank">我的博客</a><a href="${ctx}/home/logout.do">
                           退出/登陆</a>
         </div>
     </div>
@@ -46,9 +46,9 @@
 				        欢迎你，<%=username %>
 				</h1>
 				<div id="header_user_right">
-				        <a href="#"><img class="pfs" src="${ctx}/images/sample_face.gif" alt=""></a>
-				        <a href="#"><%=username %></a>
-				        · <a href="#">我的博客</a>
+				        <a href="${ctx}/jsp/bolgList.jsp?flag=1"  target="_blank"><img class="pfs" src="${ctx}/images/sample_face.gif" alt=""></a>
+				        <a href="${ctx}/jsp/bolgList.jsp?flag=1"  target="_blank"><%=username %></a>
+				        · <a href="${ctx}/jsp/bolgList.jsp?flag=1"  target="_blank">我的博客</a>
 				        · <a href="${ctx}/home/logout.do" onclick="return logout();">退出/登陆</a>
 				</div>
 
@@ -60,27 +60,23 @@
             <div id="app_bar">
 	<p class="app_r_3"></p><p class="app_r_2"></p><p class="app_r_1"></p>
 	<div id="app_list_wrapper">
-		<ul class="app_list">
+		<ul class="app_list">		
 			<li>
                 <img src="${ctx}/images/ico_group.gif" alt=""><a id="app_ing" href="#">版块</a><div class="clear"></div>
 			</li>
 			<li>
+				<em><a href="${ctx}/home/index.do?type=0" target="_self">首页</a></em><img src="${ctx}/images/ico_question.gif" alt=""><a id="app_q" href="${ctx}/home/index.do?type=0">首页</a>
+			</li>
+
+			<li>
 				<em><a href="${ctx}/blog/toAddBlog.do" target="_blank">写博</a></em><img src="${ctx}/images/ico_blog.gif" alt=""><a id="app_blog" href="${ctx}/blog/toAddBlog.do" target="_blank">博客</a>
 			</li>
 			<li>
-				<em><a href="#" target="_blank">投递</a></em><img src="${ctx}/images/ico_news.gif" alt=""><a id="app_news" href="#">新闻</a>
+				<img src="${ctx}/images/ico_news.gif" alt=""><a id="app_news" href="${ctx}/jsp/bolgList.jsp?flag=1"  target="_blank">我的博客</a>
 			</li>
+
 			<li>
-				<em><a href="#" target="_self">提问</a></em><img src="${ctx}/images/ico_question.gif" alt=""><a id="app_q" href="#">博问</a>
-			</li>
-			<li>
-				<em><a href="#" target="_blank" onclick="AddToWz();return false;">添加</a></em><img src="${ctx}/images/ico_bookmark.gif" alt=""><a id="app_wz" href="#" class="current">收藏</a>
-			</li>
-			<li>
-				<em><a href="#" target="_blank">发布</a></em><img src="${ctx}/images/ico_job.gif" alt=""><a id="app_job" href="#">招聘</a>
-			</li>
-			<li>
-                <img src="${ctx}/images/ico_kb.gif" alt=""><a id="app_kb" href="#">文库</a>
+				<img src="${ctx}/images/ico_bookmark.gif" alt=""><a id="app_wz" href="${ctx}/jsp/bolgList.jsp?flag=2" target="_blank" class="current">我的草稿</a>
 			</li>
 		</ul>
 		<div class="app_setting">
@@ -102,10 +98,10 @@
         <li>
             <a href="#" class="" name="1">我的博客</a>
         </li>
-
+<!-- 
         <li>
             <a href="#" class="" name="2">我的收藏</a>
-        </li>
+        </li> -->
         <li>
              <a href="#" class="" name="2">我的草稿</a>
         </li>

@@ -20,11 +20,11 @@
     }
    
   %>
-<body style="background-color: #7d8b8d;">
+<body>
 
     <div id="top">
         <div id="top_left">
-            <a href="${ctx}/home/index.do?type=0">首页</a><a href="${ctx}/blog/toAddBlog.do">写博</a><a href="#">我的收藏</a><a href="#">我的博客</a><a href="${ctx}/home/logout.do">退出</a>
+            <a href="${ctx}/home/index.do?type=0">首页</a><a href="${ctx}/blog/toAddBlog.do">写博</a><a href="${ctx}/jsp/bolgList.jsp?flag=2" target="_blank">我的草稿</a><a href="${ctx}/jsp/bolgList.jsp?flag=1"  target="_blank">我的博客</a><a href="${ctx}/home/logout.do">退出</a>
         </div>
     </div>
     <div class="clear"></div>
@@ -36,12 +36,12 @@
 	      </div>
 	      <div class="clear"></div>
 	      <div id="header_user"><h1 id="section_left">
-					<img src="${ctx}/images/ico_news.gif" style="margin-right: 10px;">当前版块 &nbsp;<font color="green;">-</font>&nbsp;${blog.sectionName}
+					<img src="${ctx}/images/ico_news.gif" style="margin-right: 10px;"><font id='mypalyId'> </font> 
 					</h1>
 					<div id="header_user_right">
 					        <a href="#"><img class="pfs" src="${ctx}/images/ico_question.gif" alt=""></a>
 					        <a href="#"></a>
-					        · <a href="#">我的博客</a>
+					        · <a href="${ctx}/jsp/bolgList.jsp?flag=1"  target="_blank">我的博客</a>
 					        · <a href="${ctx}/home/logout.do" onclick="return logout();">退出</a>
 					</div>
 	
@@ -53,8 +53,8 @@
          
         </div>
 
-    </div>
-    <input type="text" name="flag"/>
+    </div>  <input id="userId" name="userId" type="hidden" value="${sessionScope.SESSION_USERID}"/>
+    <input type="hidden" name="flag" id="flagId" value="${param.flag}"/>
     
 <div class="clear"></div>
 
